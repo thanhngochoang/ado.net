@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CASEnet.SecureIdServer.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:CASEnet.SecureIdServer.WebApi.Controllers.DeviceController.RegisterDevice(System.String)">
+            <summary>
+            Regiser Device
+            </summary>
+            <param name="phone">phone Number</param>
+            <returns>Return the installation ID of the newly confirmation</returns>
+            <response code="200">Return the installation ID of the newly confirmation with send a mesaenger to phone number</response>
+            <response code="400">If the input is not valid</response>
+        </member>
+        <member name="M:CASEnet.SecureIdServer.WebApi.Controllers.DeviceController.ConfirmDeviceRegistration(System.Guid,System.String)">
+            <summary>
+            Confirm deivce registration
+            </summary>
+            <param name="installationId"></param>
+            <param name="confirmCode"></param>
+            <returns>StatusCode</returns>
+            <response code="200">Success</response>
+            <response code="400">Param string invalid</response>
+            <response code="403">Confirm code  invalid</response>
+            <response code="404">Installation not exists</response>
+            <response code="500">Installation had confirmed</response>
+        </member>
+        <member name="M:CASEnet.SecureIdServer.WebApi.Controllers.DeviceController.RequestDeviceCode(System.Guid)">
+            <summary>
+            The only time get device code 
+            </summary>
+            <param name="installationId"></param>
+            <returns>Device code</returns>
+            <response code="200">Device code</response>
+            <response code="400">No code for device</response>
+        </member>
+        <member name="M:CASEnet.SecureIdServer.WebApi.Controllers.DeviceController.UpdateDeviceCode(System.String)">
+            <summary>
+            Update new code
+            </summary>
+            <param name="phone"></param>
+            <returns></returns>
+            <response code="400">No device register by phone</response>
+        </member>
+    </members>
+</doc>

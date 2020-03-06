@@ -1,0 +1,11 @@
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.deps.json
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.dll
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.pdb
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.dll
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.pdb
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.csprojAssemblyReference.cache
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.AssemblyInfoInputs.cache
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.AssemblyInfo.cs
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.csproj.CopyComplete
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.dll
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.pdb

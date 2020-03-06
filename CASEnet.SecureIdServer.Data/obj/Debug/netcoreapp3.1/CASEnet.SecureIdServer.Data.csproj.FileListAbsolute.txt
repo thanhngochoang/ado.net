@@ -1,0 +1,7 @@
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Data\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.deps.json
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Data\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.dll
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Data\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.pdb
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Data\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.AssemblyInfoInputs.cache
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Data\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.AssemblyInfo.cs
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Data\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.dll
+D:\Projects\CASEnet.SecureIdServer\CASEnet.SecureIdServer.Data\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.pdb
