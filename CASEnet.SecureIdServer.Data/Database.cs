@@ -14,9 +14,8 @@ namespace CASEnet.SecureIdServer.Data
         protected abstract IDbConnection CreateConnection();
 
         protected abstract IDbCommand CreateCommand();
-
+        
         #endregion
-
         #region Connection and transaction
 
         private IDbConnection _connection;
@@ -86,7 +85,7 @@ namespace CASEnet.SecureIdServer.Data
 
             CloseConnection();
         }
-
+       
         #endregion
 
         #region Private functions
@@ -109,6 +108,22 @@ namespace CASEnet.SecureIdServer.Data
             FixParameterNullValue(parameters);
 
             var dbCommand = CreateCommand();
+            dbCommand.CommandType = commandType;
+            dbCommand.CommandText = commandText;
+            foreach (var dbDataParameter in parameters)
+            {
+                dbCommand.Parameters.Add(dbDataParameter);
+            }
+            dbCommand.Connection = _connection;
+            dbCommand.Transaction = _transaction;
+
+            return dbCommand;
+        }
+
+        private IDbCommand CreateCommand(string commandText, CommandType commandType, object objParameters)
+        {
+            var dbCommand = CreateCommand();
+            var parameters = objParameters.ToSqlParamsList();
             dbCommand.CommandType = commandType;
             dbCommand.CommandText = commandText;
             foreach (var dbDataParameter in parameters)
@@ -214,6 +229,17 @@ namespace CASEnet.SecureIdServer.Data
             });
         }
 
+        public List<T> ExecuteToList<T>(string commandText, CommandType commandType, object parameters)
+        {
+            return OpenConnection<List<T>>(() =>
+            {
+                using (var dbCommand = CreateCommand(commandText, commandType, parameters))
+                {
+                    return MappingReaderToList<T>(dbCommand);
+                }
+            });
+        }
+
         #endregion
 
         #region Execute to single
@@ -230,6 +256,17 @@ namespace CASEnet.SecureIdServer.Data
         }
 
         public T ExecuteToSingle<T>(string commandText, CommandType commandType, params IDbDataParameter[] parameters)
+        {
+            return OpenConnection<T>(() =>
+            {
+                using (var dbCommand = CreateCommand(commandText, commandType, parameters))
+                {
+                    return MappingReadToSingle<T>(dbCommand);
+                }
+            });
+        }
+
+        public T ExecuteToSingle<T>(string commandText, CommandType commandType, object parameters)
         {
             return OpenConnection<T>(() =>
             {
@@ -266,6 +303,16 @@ namespace CASEnet.SecureIdServer.Data
             });
         }
 
+        public T ExecuteScalar<T>(string commandText, CommandType commandType, object parameters)
+        {
+            return OpenConnection<T>(() =>
+            {
+                using (var dbCommand = CreateCommand(commandText, commandType, parameters))
+                {
+                    return ExecuteScalar<T>(dbCommand);
+                }
+            });
+        }
         #endregion
 
         #region Execute non query
@@ -282,6 +329,17 @@ namespace CASEnet.SecureIdServer.Data
         }
 
         public int ExecuteNonQuery(string commandText, CommandType commandType, params IDbDataParameter[] parameters)
+        {
+            return OpenConnection<int>(() =>
+            {
+                using (var dbCommand = CreateCommand(commandText, commandType, parameters))
+                {
+                    return ExecuteNonQuery(dbCommand);
+                }
+            });
+        }
+
+        public int ExecuteNonQuery(string commandText, CommandType commandType, object parameters)
         {
             return OpenConnection<int>(() =>
             {

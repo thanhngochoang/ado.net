@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.WebApi\\CASEnet.SecureIdServer.WebApi.csproj": {}
+    "E:\\Project\\ado.net\\CASEnet.SecureIdServer.WebApi\\CASEnet.SecureIdServer.WebApi.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj": {
+    "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj",
+        "projectUniqueName": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj",
         "projectName": "CASEnet.SecureIdServer.Data",
-        "projectPath": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj",
-        "packagesPath": "C:\\Users\\kloon\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Data\\obj\\",
+        "projectPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj",
+        "packagesPath": "C:\\Users\\HP Workstation\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\kloon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP Workstation\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,7 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Projects\\Rething-TFS\\Sources\\Common\\Development\\Packages": {},
+          "D:\\Sources\\Common\\Development\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -66,24 +66,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj": {
+    "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj",
+        "projectUniqueName": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj",
         "projectName": "CASEnet.SecureIdServer.Service",
-        "projectPath": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj",
-        "packagesPath": "C:\\Users\\kloon\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Service\\obj\\",
+        "projectPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj",
+        "packagesPath": "C:\\Users\\HP Workstation\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\kloon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP Workstation\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,14 +91,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Projects\\Rething-TFS\\Sources\\Common\\Development\\Packages": {},
+          "D:\\Sources\\Common\\Development\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj": {
-                "projectPath": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj"
+              "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj": {
+                "projectPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj"
               }
             }
           }
@@ -111,6 +111,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -126,24 +132,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.WebApi\\CASEnet.SecureIdServer.WebApi.csproj": {
+    "E:\\Project\\ado.net\\CASEnet.SecureIdServer.WebApi\\CASEnet.SecureIdServer.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.WebApi\\CASEnet.SecureIdServer.WebApi.csproj",
+        "projectUniqueName": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.WebApi\\CASEnet.SecureIdServer.WebApi.csproj",
         "projectName": "CASEnet.SecureIdServer.WebApi",
-        "projectPath": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.WebApi\\CASEnet.SecureIdServer.WebApi.csproj",
-        "packagesPath": "C:\\Users\\kloon\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.WebApi\\obj\\",
+        "projectPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.WebApi\\CASEnet.SecureIdServer.WebApi.csproj",
+        "packagesPath": "C:\\Users\\HP Workstation\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\kloon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP Workstation\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -151,14 +157,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Projects\\Rething-TFS\\Sources\\Common\\Development\\Packages": {},
+          "D:\\Sources\\Common\\Development\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj": {
-                "projectPath": "D:\\Projects\\CASEnet.SecureIdServer\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj"
+              "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj": {
+                "projectPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj"
               }
             }
           }
@@ -207,7 +213,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

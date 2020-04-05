@@ -17,15 +17,9 @@ namespace CASEnet.SecureIdServer.Data
             _settings = options.Value;
         }
 
-        protected override IDbCommand CreateCommand()
-        {
-            return new SqlCommand();
-        }
+        protected override IDbCommand CreateCommand() => new SqlCommand();
 
-        protected override IDbConnection CreateConnection()
-        {
-            return new SqlConnection(_settings.ConnectionString);
-        }
+        protected override IDbConnection CreateConnection() => new SqlConnection(_settings.ConnectionString);
 
         protected async Task<bool> SendSms(string phoneNumber, string code)
         {
