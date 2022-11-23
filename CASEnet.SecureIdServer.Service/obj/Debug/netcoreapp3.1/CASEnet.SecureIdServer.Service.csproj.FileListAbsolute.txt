@@ -21,3 +21,16 @@ E:\Project\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEne
 E:\Project\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.dll
 E:\Project\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.pdb
 E:\Project\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.csproj.CoreCompileInputs.cache
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.deps.json
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.dll
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.pdb
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.dll
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\bin\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Data.pdb
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.csproj.AssemblyReference.cache
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.GeneratedMSBuildEditorConfig.editorconfig
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.AssemblyInfoInputs.cache
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.AssemblyInfo.cs
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.csproj.CoreCompileInputs.cache
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.csproj.CopyComplete
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.dll
+E:\_PROJECT\ado.net\CASEnet.SecureIdServer.Service\obj\Debug\netcoreapp3.1\CASEnet.SecureIdServer.Service.pdb
