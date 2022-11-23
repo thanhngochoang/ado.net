@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj": {}
+    "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj": {}
   },
   "projects": {
-    "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj": {
+    "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj",
+        "projectUniqueName": "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj",
         "projectName": "CASEnet.SecureIdServer.Data",
-        "projectPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj",
-        "packagesPath": "C:\\Users\\HP Workstation\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\obj\\",
+        "projectPath": "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj",
+        "packagesPath": "C:\\Users\\Workstation\\.nuget\\packages\\",
+        "outputPath": "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\HP Workstation\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Workstation\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,11 +22,11 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Sources\\Common\\Development\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -41,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.Extensions.Options": {
               "target": "Package",
@@ -57,33 +55,45 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj": {
+    "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj",
+        "projectUniqueName": "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj",
         "projectName": "CASEnet.SecureIdServer.Service",
-        "projectPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj",
-        "packagesPath": "C:\\Users\\HP Workstation\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Service\\obj\\",
+        "projectPath": "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Service\\CASEnet.SecureIdServer.Service.csproj",
+        "packagesPath": "C:\\Users\\Workstation\\.nuget\\packages\\",
+        "outputPath": "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Service\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\HP Workstation\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Workstation\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,14 +101,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\Sources\\Common\\Development\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj": {
-                "projectPath": "E:\\Project\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj"
+              "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj": {
+                "projectPath": "E:\\_PROJECT\\ado.net\\CASEnet.SecureIdServer.Data\\CASEnet.SecureIdServer.Data.csproj"
               }
             }
           }
@@ -111,6 +121,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.Extensions.Options": {
               "target": "Package",
@@ -123,16 +134,31 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
