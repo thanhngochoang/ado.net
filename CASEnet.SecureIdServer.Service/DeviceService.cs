@@ -15,7 +15,7 @@ namespace CASEnet.SecureIdServer.Service
         string RequestDeviceCode(Guid installationId);
         void UpdateDeviceCode(string phone, string code);
     }
-    public class DeviceService : SqlServerService<DeviceService>, IDeviceService
+    public sealed class DeviceService : SqlServerService<DeviceService>, IDeviceService
     {
         public DeviceService(IOptions<AppSettings> options, ILoggerServices logger, IHttpContextAccessor httpContextAccessor) : base(options, logger, httpContextAccessor)
         {

@@ -9,6 +9,7 @@ namespace CASEnet.SecureIdServer.Data.Entities
         [Key]
         [Phone]
         public string Phone { get; set; }
+
         public DateTime? ChangedOn { get; set; }
 
         public virtual ICollection<Codes> Codes { get; set; }

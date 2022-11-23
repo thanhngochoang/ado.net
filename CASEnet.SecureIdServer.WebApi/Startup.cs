@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CASEnet.SecureIdServer.Data;
+using CASEnet.SecureIdServer.Data.Interface;
 using CASEnet.SecureIdServer.Service;
+using CASEnet.SecureIdServer.Service.Implement;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace CASEnet.SecureIdServer.WebApi
 {
@@ -28,9 +23,9 @@ namespace CASEnet.SecureIdServer.WebApi
         {
             services.AddControllers();
             services.AddScoped<IDeviceService, DeviceService>();
-
+            services.AddScoped<ILoggerServices, LoggerServices>();
+            services.AddHttpContextAccessor();
             services.ReadConnectionSettingConfig(Configuration, "DeviceDb");
-            services.AddScoped<DeviceDbSql>();
             services.CustomizedAddSwagger(Configuration);
         }
 

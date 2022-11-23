@@ -15,10 +15,14 @@ namespace CASEnet.SecureIdServer.Data
         private readonly AppSettings _settings;
         private readonly ILoggerServices _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
+
         protected delegate SqlParameter Param(SqlParameter param);
+
         protected delegate IEnumerable<SqlParameter> ParamExtend();
+
         protected Param? UpdateParameter;
         protected ParamExtend? ExtendParameter;
+
         public SqlServerService(IOptions<AppSettings> options, ILoggerServices logger, IHttpContextAccessor httpContextAccessor)
         {
             _settings = options.Value;
@@ -26,21 +30,26 @@ namespace CASEnet.SecureIdServer.Data
             _httpContextAccessor = httpContextAccessor;
             dbLogger = DbLogException;
         }
+
         protected override IDbCommand InitCommand(string commandText, CommandType commandType, object objParameters)
         {
             return new SqlCommand();
         }
+
         protected string CreatedByIP => _httpContextAccessor.HttpContext.GetIPAddress();
         protected string RequestPath => _httpContextAccessor.HttpContext.Request.Path;
+
         protected override IDbConnection InitConnectionString()
         {
             return new SqlConnection(_settings.ConnectionString);
         }
+
         //Customize logger
         public void DbLogException(Exception ex, IDbCommand cmd, string createdByIP, string requestUrl, string created_By = "Execute DB")
         {
             _logger.DbLogException(ex, cmd, CreatedByIP, RequestPath, typeof(T).Name);
         }
+
         protected IEnumerable<SqlParameter> ObjectToPrams(object objParameters, IEnumerable<SqlParameter>? extends)
         {
             var prams = TypeConvertor.ToSqlParamsList(
@@ -48,6 +57,7 @@ namespace CASEnet.SecureIdServer.Data
                 , objParameters, extends);
             return prams;
         }
+
         protected override IEnumerable<object> MappingPrams(object objParameters)
         {
             if (objParameters == null)
@@ -60,7 +70,6 @@ namespace CASEnet.SecureIdServer.Data
                 UpdateParameter?.Invoke(item);
                 yield return item;
             }
-
         }
     }
 }

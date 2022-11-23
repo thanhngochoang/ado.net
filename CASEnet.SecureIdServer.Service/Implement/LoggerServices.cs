@@ -27,7 +27,7 @@ namespace CASEnet.SecureIdServer.Service.Implement
 
         protected override IEnumerable<object> MappingPrams(object objParameters)
         {
-            return TypeConvertor.ToSqlParamsList((p) => new MySqlParameter(p.Name, TypeConvertor.GetDbType(p.Property.PropertyType)) { Value = p.Value } , objParameters);
+            return TypeConvertor.ToSqlParamsList((p) => new MySqlParameter(p.Name, TypeConvertor.GetDbType(p.Property.PropertyType)) { Value = p.Value }, objParameters);
         }
 
         protected override IDbCommand InitCommand(string commandText, CommandType commandType, object objParameters)
@@ -46,7 +46,7 @@ namespace CASEnet.SecureIdServer.Service.Implement
                 e.Dispose();
         }
 
-        public void DbLogException(Exception ex, IDbCommand cmd,  string createdByIP, string requestUrl, string created_By = "Execute DB")
+        public void DbLogException(Exception ex, IDbCommand cmd, string createdByIP, string requestUrl, string created_By = "Execute DB")
         {
             var storedProcedureName = cmd.CommandText;
             var storedProcedureParameters = string.Join(Environment.NewLine, GetParamsLog(cmd));
@@ -85,7 +85,7 @@ namespace CASEnet.SecureIdServer.Service.Implement
             {
                 LogException(ex, ex.Message, createdBy, createdByIP, _settings.AppName, requestUrl);
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 throw;
             }
@@ -96,7 +96,7 @@ namespace CASEnet.SecureIdServer.Service.Implement
             {
                 LogException(ex, messenger, createdBy, createdByIP, _settings.AppName, requestUrl);
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 throw;
             }

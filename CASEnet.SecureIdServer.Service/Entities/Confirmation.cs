@@ -7,8 +7,10 @@ namespace CASEnet.SecureIdServer.Data.Entities
     {
         [Key]
         public Guid InstallationId { get; set; }
+
         [Phone]
         public string Phone { get; set; }
+
         public string ConfirmationCode { get; set; }
         public DateTime? ConfirmedOn { get; set; }
         public DateTime? RevokedOn { get; set; }

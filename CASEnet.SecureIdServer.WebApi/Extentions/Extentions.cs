@@ -1,5 +1,4 @@
-﻿using CASEnet.SecureIdServer.Data;
-using CASEnet.SecureIdServer.Data.Model;
+﻿using CASEnet.SecureIdServer.Data.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,8 +7,6 @@ using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.IO;
 using System.Reflection;
-using System.Text.RegularExpressions;
-using static CASEnet.SecureIdServer.Data.DeviceDbSql;
 
 namespace CASEnet.SecureIdServer.WebApi
 {
@@ -42,7 +39,6 @@ namespace CASEnet.SecureIdServer.WebApi
                     Description = configuration["Swagger:Description"]
                 });
 
-        
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);

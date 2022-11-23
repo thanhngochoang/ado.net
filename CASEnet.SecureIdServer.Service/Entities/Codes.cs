@@ -10,8 +10,9 @@ namespace CASEnet.SecureIdServer.Data.Entities
 
         [Phone]
         public string Phone { get; set; }
+
         public DateTime SentOn { get; set; }
-        
+
         public Phones Phones { get; set; }
     }
 }

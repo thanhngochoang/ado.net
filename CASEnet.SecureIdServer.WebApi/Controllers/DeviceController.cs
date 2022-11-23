@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using CASEnet.SecureIdServer.Service;
-using Microsoft.AspNetCore.Http;
+﻿using CASEnet.SecureIdServer.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Net;
 
 namespace CASEnet.SecureIdServer.WebApi.Controllers
 {
@@ -124,6 +120,5 @@ namespace CASEnet.SecureIdServer.WebApi.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
-
     }
 }

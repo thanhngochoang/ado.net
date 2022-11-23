@@ -28,7 +28,7 @@
         </member>
         <member name="M:CASEnet.SecureIdServer.WebApi.Controllers.DeviceController.RequestDeviceCode(System.Guid)">
             <summary>
-            The only time get device code 
+            The only time get device code
             </summary>
             <param name="installationId"></param>
             <returns>Device code</returns>

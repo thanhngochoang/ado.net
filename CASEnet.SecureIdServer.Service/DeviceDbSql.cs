@@ -8,7 +8,7 @@ namespace CASEnet.SecureIdServer.Data
 {
     public sealed class DeviceDbSql : SqlServerService<DeviceDbSql>
     {
-        public  DeviceDbSql(IOptions<AppSettings> options, ILoggerServices logger, IHttpContextAccessor httpContextAccessor) : base(options, logger, httpContextAccessor)
+        public DeviceDbSql(IOptions<AppSettings> options, ILoggerServices logger, IHttpContextAccessor httpContextAccessor) : base(options, logger, httpContextAccessor)
         {
         }
 
