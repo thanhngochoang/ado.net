@@ -1,4 +1,5 @@
 ﻿using CASEnet.SecureIdServer.Data;
+using CASEnet.SecureIdServer.Data.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,11 +53,10 @@ namespace CASEnet.SecureIdServer.WebApi
 
         public static IServiceCollection ReadConnectionSettingConfig(this IServiceCollection services, IConfiguration configuration, string connectionName)
         {
-            services.Configure<Settings>(options =>
+            services.Configure<AppSettings>(options =>
             {
-                configuration.GetSection(nameof(Settings)).Bind(options);
+                configuration.GetSection(nameof(AppSettings)).Bind(options);
                 options.ConnectionString = configuration.GetConnectionString(connectionName);
-                options.ServerSMSConnect = configuration.GetValue<string>("SmsConfig");
             });
 
             return services;

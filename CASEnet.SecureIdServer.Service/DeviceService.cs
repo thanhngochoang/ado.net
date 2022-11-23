@@ -1,8 +1,10 @@
 ﻿using CASEnet.SecureIdServer.Data;
+using CASEnet.SecureIdServer.Data.Interface;
+using CASEnet.SecureIdServer.Data.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using System;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace CASEnet.SecureIdServer.Service
 {
@@ -13,9 +15,11 @@ namespace CASEnet.SecureIdServer.Service
         string RequestDeviceCode(Guid installationId);
         void UpdateDeviceCode(string phone, string code);
     }
-    public class DeviceService : DeviceDbSql, IDeviceService
+    public class DeviceService : SqlServerService<DeviceService>, IDeviceService
     {
-        public DeviceService(IOptions<Settings> options) : base(options) { }
+        public DeviceService(IOptions<AppSettings> options, ILoggerServices logger, IHttpContextAccessor httpContextAccessor) : base(options, logger, httpContextAccessor)
+        {
+        }
 
         public Guid RegisterDevice(string phone, string confirmationcode)
         {
