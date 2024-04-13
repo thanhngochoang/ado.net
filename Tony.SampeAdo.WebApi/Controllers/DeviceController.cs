@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using CASEnet.SecureIdServer.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Tony.SampeAdo.Service;
+using Tony.SampeAdo.WebApi.Extentions;
 
-namespace CASEnet.SecureIdServer.WebApi.Controllers
+namespace Tony.SampeAdo.WebApi
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -34,20 +35,7 @@ namespace CASEnet.SecureIdServer.WebApi.Controllers
         [HttpPost()]
         public ActionResult<Guid> RegisterDevice([FromBody] string phone)
         {
-            try
-            {
-                var code = Extentions.RandomDigit();
-                return _deviceService.RegisterDevice(phone, code);
-            }
-            catch (ArgumentException)
-            {
-                return StatusCode((int)HttpStatusCode.BadRequest);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Error:::::", ex.Message);
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-            }
+          return Ok();
         }
 
         /// <summary>
@@ -113,16 +101,7 @@ namespace CASEnet.SecureIdServer.WebApi.Controllers
         [HttpPut("")]
         public IActionResult UpdateDeviceCode([FromBody] string phone)
         {
-            try
-            {
-                _deviceService.UpdateDeviceCode(phone, Extentions.RandomDigit());
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Error:::::", ex.Message);
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-            }
+            return Ok();
         }
 
     }

@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Collections;
-using System.Data;
 
-namespace CASEnet.SecureIdServer.Data
+namespace Tony.SampeAdo.Infastructure.Extentions
 
 {
     /// <summary>
     /// Use for an alternative param name other than the propery name
     /// </summary>
-    [System.AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property)]
     public class QueryParamNameAttribute : Attribute
     {
         public string Name { get; set; }
@@ -24,7 +23,7 @@ namespace CASEnet.SecureIdServer.Data
     /// <summary>
     /// Ignore this property
     /// </summary>
-    [System.AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property)]
     public class QueryParamIgnoreAttribute : Attribute
     {
     }
@@ -41,47 +40,45 @@ namespace CASEnet.SecureIdServer.Data
 
         public static object[] ToSqlParamsArray(this object obj, SqlParameter[] additionalParams = null)
         {
-            var result = ToSqlParamsList(obj, additionalParams);
+            var result = obj.ToSqlParamsList(additionalParams);
             return result.ToArray<object>();
 
         }
 
-        public static List<SqlParameter> ToSqlParamsList(this object obj, SqlParameter[] additionalParams = null)
+        public static IEnumerable<SqlParameter> ToSqlParamsList(this object obj, SqlParameter[] additionalParams = null)
         {
+            return obj.GetParamList().Concat(additionalParams ?? Enumerable.Empty<SqlParameter>());
+        }
+        private static IEnumerable<SqlParameter> GetParamList(this object obj)
+        {
+
             var props = (
-                from p in obj.GetType().GetProperties()
+                from p in obj.GetType().GetProperties(System.Reflection.BindingFlags.Public)
                 let nameAttr = p.GetCustomAttributes(typeof(QueryParamNameAttribute), true)
                 let ignoreAttr = p.GetCustomAttributes(typeof(QueryParamIgnoreAttribute), true)
                 select new { Property = p, Names = nameAttr, Ignores = ignoreAttr }).ToList();
 
-            var result = new List<SqlParameter>();
 
-            props.ForEach(p =>
+            foreach (var p in props)
             {
                 if (p.Ignores != null && p.Ignores.Length > 0)
-                    return;
+                    yield break;
 
                 var name = p.Names.FirstOrDefault() as QueryParamNameAttribute;
                 var pinfo = new QueryParamInfo();
 
-                if (name != null && !String.IsNullOrWhiteSpace(name.Name))
+                if (name != null && !string.IsNullOrWhiteSpace(name.Name))
                     pinfo.Name = name.Name.Replace("@", "");
                 else
                     pinfo.Name = p.Property.Name.Replace("@", "");
 
                 pinfo.Value = p.Property.GetValue(obj) ?? DBNull.Value;
-                var sqlParam = new SqlParameter(pinfo.Name, TypeConvertor.ToSqlDbType(p.Property.PropertyType))
+                var sqlParam = new SqlParameter(pinfo.Name, TypeConverter.ToSqlDbType(p.Property.PropertyType))
                 {
                     Value = pinfo.Value
                 };
-                result.Add(sqlParam);
-            });
-
-            if (additionalParams != null && additionalParams.Length > 0)
-                result.AddRange(additionalParams);
-
-            return result;
-
+                yield return sqlParam;
+            }
         }
     }
 
@@ -93,7 +90,7 @@ namespace CASEnet.SecureIdServer.Data
     /// <summary>
     /// Convert a base data type to another base data type
     /// </summary>
-    public sealed class TypeConvertor
+    public sealed class TypeConverter
     {
 
         private struct DbTypeMapEntry
@@ -103,73 +100,50 @@ namespace CASEnet.SecureIdServer.Data
             public SqlDbType SqlDbType;
             public DbTypeMapEntry(Type type, DbType dbType, SqlDbType sqlDbType)
             {
-                this.Type = type;
-                this.DbType = dbType;
-                this.SqlDbType = sqlDbType;
+                Type = type;
+                DbType = dbType;
+                SqlDbType = sqlDbType;
             }
 
         };
 
-        private static ArrayList _DbTypeList = new ArrayList();
+        private static readonly Lazy<Dictionary<Type, DbTypeMapEntry>> _typeMapList = new Lazy<Dictionary<Type, DbTypeMapEntry>>(() =>
+        {
+            return _mapperSource.ToDictionary(x => x.Type);
+        });
+        private static readonly Lazy<Dictionary<DbType, DbTypeMapEntry>> _dbTypeMaplist = new Lazy<Dictionary<DbType, DbTypeMapEntry>>(() =>
+        {
+            return _mapperSource.ToDictionary(x => x.DbType);
+        });
+
+        private static readonly Lazy<Dictionary<SqlDbType, DbTypeMapEntry>> _sqlTypeMaplist = new Lazy<Dictionary<SqlDbType, DbTypeMapEntry>>(() =>
+        {
+            return _mapperSource.ToDictionary(x => x.SqlDbType);
+        });
 
         #region Constructors
-
-        static TypeConvertor()
+        private static IEnumerable<DbTypeMapEntry> _mapperSource
         {
-            DbTypeMapEntry dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(bool), DbType.Boolean, SqlDbType.Bit);
-            _DbTypeList.Add(dbTypeMapEntry);
+            get
+            {
+                yield return new DbTypeMapEntry(typeof(bool), DbType.Boolean, SqlDbType.Bit);
+                yield return new DbTypeMapEntry(typeof(byte), DbType.Double, SqlDbType.TinyInt);
+                yield return new DbTypeMapEntry(typeof(byte[]), DbType.Binary, SqlDbType.Image);
+                yield return new DbTypeMapEntry(typeof(DateTime), DbType.DateTime, SqlDbType.DateTime);
+                yield return new DbTypeMapEntry(typeof(decimal), DbType.Decimal, SqlDbType.Decimal);
+                yield return new DbTypeMapEntry(typeof(double), DbType.Double, SqlDbType.Float);
+                yield return new DbTypeMapEntry(typeof(Guid), DbType.Guid, SqlDbType.UniqueIdentifier);
+                yield return new DbTypeMapEntry(typeof(short), DbType.Int16, SqlDbType.SmallInt);
+                yield return new DbTypeMapEntry(typeof(int), DbType.Int32, SqlDbType.Int);
+                yield return new DbTypeMapEntry(typeof(long), DbType.Int64, SqlDbType.BigInt);
+                yield return new DbTypeMapEntry(typeof(object), DbType.Object, SqlDbType.Variant);
+                yield return new DbTypeMapEntry(typeof(string), DbType.String, SqlDbType.VarChar);
 
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(byte), DbType.Double, SqlDbType.TinyInt);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(byte[]), DbType.Binary, SqlDbType.Image);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(DateTime), DbType.DateTime, SqlDbType.DateTime);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(Decimal), DbType.Decimal, SqlDbType.Decimal);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(double), DbType.Double, SqlDbType.Float);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(Guid), DbType.Guid, SqlDbType.UniqueIdentifier);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(Int16), DbType.Int16, SqlDbType.SmallInt);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(Int32), DbType.Int32, SqlDbType.Int);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(Int64), DbType.Int64, SqlDbType.BigInt);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(object), DbType.Object, SqlDbType.Variant);
-            _DbTypeList.Add(dbTypeMapEntry);
-
-            dbTypeMapEntry
-            = new DbTypeMapEntry(typeof(string), DbType.String, SqlDbType.VarChar);
-            _DbTypeList.Add(dbTypeMapEntry);
-
+            }
         }
 
-        private TypeConvertor()
-        {
 
-        }
+
 
         #endregion
 
@@ -243,65 +217,30 @@ namespace CASEnet.SecureIdServer.Data
 
         private static DbTypeMapEntry Find(Type type)
         {
-            object retObj = null;
-            for (int i = 0; i < _DbTypeList.Count; i++)
+            if (_typeMapList.Value.TryGetValue(Nullable.GetUnderlyingType(type) ?? type, out var entry))
             {
-                DbTypeMapEntry entry = (DbTypeMapEntry)_DbTypeList[i];
-                if (entry.Type == (Nullable.GetUnderlyingType(type) ?? type))
-                {
-                    retObj = entry;
-                    break;
-                }
+                return entry;
             }
-            if (retObj == null)
-            {
-                throw
-                new ApplicationException("Referenced an unsupported Type " + type.ToString());
-            }
-
-            return (DbTypeMapEntry)retObj;
+            throw new ApplicationException("Referenced an unsupported Type " + type.ToString());
         }
 
         private static DbTypeMapEntry Find(DbType dbType)
         {
-            object retObj = null;
-            for (int i = 0; i < _DbTypeList.Count; i++)
-            {
-                DbTypeMapEntry entry = (DbTypeMapEntry)_DbTypeList[i];
-                if (entry.DbType == dbType)
-                {
-                    retObj = entry;
-                    break;
-                }
-            }
-            if (retObj == null)
-            {
-                throw
-                new ApplicationException("Referenced an unsupported DbType " + dbType.ToString());
-            }
 
-            return (DbTypeMapEntry)retObj;
+            if (_dbTypeMaplist.Value.TryGetValue(dbType, out var entry))
+            {
+                return entry;
+            }
+            throw new ApplicationException("Referenced an unsupported DbType " + dbType.ToString());
         }
 
         private static DbTypeMapEntry Find(SqlDbType sqlDbType)
         {
-            object retObj = null;
-            for (int i = 0; i < _DbTypeList.Count; i++)
+            if (_sqlTypeMaplist.Value.TryGetValue(sqlDbType, out var entry))
             {
-                DbTypeMapEntry entry = (DbTypeMapEntry)_DbTypeList[i];
-                if (entry.SqlDbType == sqlDbType)
-                {
-                    retObj = entry;
-                    break;
-                }
+                return entry;
             }
-            if (retObj == null)
-            {
-                throw
-                new ApplicationException("Referenced an unsupported SqlDbType");
-            }
-
-            return (DbTypeMapEntry)retObj;
+            throw new ApplicationException("Referenced an unsupported SqlDbType");
         }
 
         #endregion

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CASEnet.SecureIdServer.Data.Entities
+namespace Tony.SampeAdo.Service.Entities
 {
     public class Phones : BaseEntity
     {

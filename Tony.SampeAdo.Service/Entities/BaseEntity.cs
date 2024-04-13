@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CASEnet.SecureIdServer.Data.Entities
+namespace Tony.SampeAdo.Service.Entities
 {
     public class BaseEntity
     {

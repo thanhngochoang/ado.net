@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <ProjectReference Include="..\Tony.SampeAdo.Infastructure\Tony.SampeAdo.Infastructure.csproj" />
   </ItemGroup>
 
 </Project>

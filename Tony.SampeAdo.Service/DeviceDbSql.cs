@@ -5,14 +5,15 @@ using System.Data.SqlClient;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Tony.SampeAdo.Infastructure;
 
-namespace CASEnet.SecureIdServer.Data
+namespace Tony.SampeAdo.Service
 {
     public class DeviceDbSql : BaseDb
     {
 
         private readonly Settings _settings;
-        public DeviceDbSql(IOptions<Settings> options): base()
+        public DeviceDbSql(IOptions<Settings> options) : base()
         {
             _settings = options.Value;
         }
@@ -42,7 +43,7 @@ namespace CASEnet.SecureIdServer.Data
             {
                 return false;
             }
-           
+
         }
 
         public class Settings

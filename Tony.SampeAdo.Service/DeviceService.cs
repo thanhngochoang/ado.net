@@ -1,10 +1,9 @@
-﻿using CASEnet.SecureIdServer.Data;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace CASEnet.SecureIdServer.Service
+namespace Tony.SampeAdo.Service
 {
     public interface IDeviceService
     {

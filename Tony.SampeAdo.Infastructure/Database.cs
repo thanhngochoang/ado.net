@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Tony.SampeAdo.Infastructure.Extentions;
 
-namespace CASEnet.SecureIdServer.Data
+namespace Tony.SampeAdo.Infastructure
 {
     public abstract class BaseDb : IDisposable
     {
@@ -13,7 +14,7 @@ namespace CASEnet.SecureIdServer.Data
         protected abstract IDbConnection CreateConnection();
 
         protected abstract IDbCommand CreateCommand();
-        
+
         #endregion
         #region Connection and transaction
 
@@ -51,7 +52,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public void BeginTransaction()
         {
-            OpenConnection<IDbTransaction>(() =>
+            OpenConnection(() =>
             {
                 _transaction = _connection.BeginTransaction();
                 return _transaction;
@@ -60,7 +61,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public void BeginTransaction(IsolationLevel isolationLevel)
         {
-            OpenConnection<IDbTransaction>(() =>
+            OpenConnection(() =>
             {
                 _transaction = _connection.BeginTransaction(isolationLevel);
                 return _transaction;
@@ -84,7 +85,7 @@ namespace CASEnet.SecureIdServer.Data
 
             CloseConnection();
         }
-       
+
         #endregion
 
         #region Private functions
@@ -172,14 +173,14 @@ namespace CASEnet.SecureIdServer.Data
             {
                 if (dataReader.FieldCount == 0)
                 {
-                    return default(T);
+                    return default;
                 }
 
                 var builder = DynamicBuilder<T>.CreateBuilder(dataReader);
 
                 if (!dataReader.Read())
                 {
-                    return default(T);
+                    return default;
                 }
                 var record = builder.Build(dataReader);
 
@@ -194,7 +195,7 @@ namespace CASEnet.SecureIdServer.Data
         private T ExecuteScalar<T>(IDbCommand dbCommand)
         {
             var obj = dbCommand.ExecuteScalar();
-            return obj == null || obj == DBNull.Value ? default(T) : (T)obj;
+            return obj == null || obj == DBNull.Value ? default : (T)obj;
         }
 
         private int ExecuteNonQuery(IDbCommand dbCommand)
@@ -208,7 +209,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public List<T> ExecuteToList<T>(string commandText, CommandType commandType)
         {
-            return OpenConnection<List<T>>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType))
                 {
@@ -219,7 +220,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public List<T> ExecuteToList<T>(string commandText, CommandType commandType, params IDbDataParameter[] parameters)
         {
-            return OpenConnection<List<T>>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType, parameters))
                 {
@@ -230,7 +231,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public List<T> ExecuteToList<T>(string commandText, CommandType commandType, object parameters)
         {
-            return OpenConnection<List<T>>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType, parameters))
                 {
@@ -245,7 +246,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public T ExecuteToSingle<T>(string commandText, CommandType commandType)
         {
-            return OpenConnection<T>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType))
                 {
@@ -256,7 +257,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public T ExecuteToSingle<T>(string commandText, CommandType commandType, params IDbDataParameter[] parameters)
         {
-            return OpenConnection<T>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType, parameters))
                 {
@@ -267,7 +268,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public T ExecuteToSingle<T>(string commandText, CommandType commandType, object parameters)
         {
-            return OpenConnection<T>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType, parameters))
                 {
@@ -282,7 +283,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public T ExecuteScalar<T>(string commandText, CommandType commandType)
         {
-            return OpenConnection<T>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType))
                 {
@@ -293,7 +294,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public T ExecuteScalar<T>(string commandText, CommandType commandType, params IDbDataParameter[] parameters)
         {
-            return OpenConnection<T>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType, parameters))
                 {
@@ -304,7 +305,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public T ExecuteScalar<T>(string commandText, CommandType commandType, object parameters)
         {
-            return OpenConnection<T>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType, parameters))
                 {
@@ -318,7 +319,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public int ExecuteNonQuery(string commandText, CommandType commandType)
         {
-            return OpenConnection<int>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType))
                 {
@@ -329,7 +330,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public int ExecuteNonQuery(string commandText, CommandType commandType, params IDbDataParameter[] parameters)
         {
-            return OpenConnection<int>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType, parameters))
                 {
@@ -340,7 +341,7 @@ namespace CASEnet.SecureIdServer.Data
 
         public int ExecuteNonQuery(string commandText, CommandType commandType, object parameters)
         {
-            return OpenConnection<int>(() =>
+            return OpenConnection(() =>
             {
                 using (var dbCommand = CreateCommand(commandText, commandType, parameters))
                 {

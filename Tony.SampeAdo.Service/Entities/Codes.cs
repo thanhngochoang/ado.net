@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CASEnet.SecureIdServer.Data.Entities
+namespace Tony.SampeAdo.Service.Entities
 {
     public class Codes : BaseEntity
     {
@@ -11,7 +11,7 @@ namespace CASEnet.SecureIdServer.Data.Entities
         [Phone]
         public string Phone { get; set; }
         public DateTime SentOn { get; set; }
-        
+
         public Phones Phones { get; set; }
     }
 }

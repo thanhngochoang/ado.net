@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CASEnet.SecureIdServer.Data;
-using CASEnet.SecureIdServer.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,8 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Tony.SampeAdo.Service;
+using Tony.SampeAdo.WebApi.Extentions;
 
-namespace CASEnet.SecureIdServer.WebApi
+namespace Tony.SampeAdo.WebApi
 {
     public class Startup
     {

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace CASEnet.SecureIdServer.WebApi
+namespace Tony.SampeAdo.WebApi
 {
     public class Program
     {

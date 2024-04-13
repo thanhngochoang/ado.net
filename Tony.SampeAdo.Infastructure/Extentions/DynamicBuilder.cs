@@ -3,7 +3,7 @@ using System.Data;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace CASEnet.SecureIdServer.Data
+namespace Tony.SampeAdo.Infastructure.Extentions
 {
     public class DynamicBuilder<T>
     {
